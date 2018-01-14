@@ -4,7 +4,8 @@ var getCtrl  = require('../controllers/index_controller');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Api Rest Full for Super Promociones Acayucan' });
+    getCtrl.getListasStockGlobal(req, res);
+    //res.render('index', { title: 'Express' });
 });
 
 module.exports = router;
