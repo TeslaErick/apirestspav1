@@ -10,7 +10,7 @@ function get404(req, res) {
     res.end();
 }
 
-exports.module = {
+module.exports = {
     getHome,
     get404
 }

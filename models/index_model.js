@@ -1,22 +1,24 @@
-var sql     =   require('mssql');
+var sql =   require('mssql');
 
-function exeConnDb(confdb, query){
+function exeConnDb( query, callback, confdb){
     var conn =  new sql.ConnectionPool(confdb);
-    conn.conect().then(() => {
+    conn.connect().then(() => {
         var req = new sql.Request(conn);
 
         req.query(query).then((recordset) => {
-            console.log(recordset);
+            callback(recordset);
             conn.close();
         }).catch((err) => {
             console.log(err);
+            callback(null, err);
             conn.close();
         })
     }).catch((err) => {
         console.log(err)
+        callback(null, err)
     })
 }
 
-exports.module = {
+module.exports = {
     exeConnDb
 }
