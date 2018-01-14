@@ -4,7 +4,6 @@ function exeConnDb( query, callback, confdb){
     var conn =  new sql.ConnectionPool(confdb);
     conn.connect().then(() => {
         var req = new sql.Request(conn);
-
         req.query(query).then((recordset) => {
             callback(recordset);
             conn.close();
