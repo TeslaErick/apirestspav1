@@ -59,4 +59,4 @@ typings/
 
 #data private
 config.js
-query_model.js
+models/query_model.js
